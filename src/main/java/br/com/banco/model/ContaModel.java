@@ -1,6 +1,5 @@
 package br.com.banco.model;
 
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -14,45 +13,43 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 @Entity
 @Table(name = "CONTA")
 public class ContaModel {
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "ID_CONTA", nullable = false)
-	private Long id;
-	
-	@Column(name = "NOME_RESPONSAVEL", nullable = false)
-	private String operador;
-	
-	@ManyToOne
-	@JsonIgnoreProperties("conta")
-	private TransferenciaModel transferencia;
+	@Column(name = "id_conta")
+	private Long idConta;
 
-	public Long getId() {
-		return id;
+	@Column(name = "nome_responsavel", nullable = false)
+	private String nomeResponsavel;
+
+//	@ManyToOne
+//	@JsonIgnoreProperties("conta")
+//	private TransferenciaModel transferenciaModel;
+
+	public Long getIdConta() {
+		return idConta;
 	}
 
-	public void setId(Long id) {
-		this.id = id;
+	public void setIdConta(Long idConta) {
+		this.idConta = idConta;
 	}
 
-	public String getOperador() {
-		return operador;
+	public String getNomeResponsavel() {
+		return nomeResponsavel;
 	}
 
-	public void setOperador(String operador) {
-		this.operador = operador;
+	public void setNomeResponsavel(String nomeResponsavel) {
+		this.nomeResponsavel = nomeResponsavel;
 	}
 
-	public TransferenciaModel getTransferencia() {
-		return transferencia;
-	}
+//	public TransferenciaModel getTransferenciaModel() {
+//		return transferenciaModel;
+//	}
+//
+//	public void setTransferenciaModel(TransferenciaModel transferenciaModel) {
+//		this.transferenciaModel = transferenciaModel;
+//	}
 
-	public void setTransferencia(TransferenciaModel transferencia) {
-		this.transferencia = transferencia;
-	}
-
-	
-	
 	
 
 }
