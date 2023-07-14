@@ -24,6 +24,10 @@ public class TransferenciaController {
 	@Autowired
 	private TransferenciaRepository transferenciaRepository;
 	
+	public TransferenciaController(TransferenciaRepository transferenciaRepository2) {
+		// TODO Auto-generated constructor stub
+	}
+
 	//retornar todos os dados de transferência.
 	@GetMapping
 	public ResponseEntity<List<TransferenciaModel>> getAll(){

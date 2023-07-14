@@ -22,10 +22,6 @@ public class ContaModel {
 	@Column(name = "nome_responsavel", nullable = false)
 	private String nomeResponsavel;
 
-//	@ManyToOne
-//	@JsonIgnoreProperties("conta")
-//	private TransferenciaModel transferenciaModel;
-
 	public Long getIdConta() {
 		return idConta;
 	}
@@ -42,13 +38,7 @@ public class ContaModel {
 		this.nomeResponsavel = nomeResponsavel;
 	}
 
-//	public TransferenciaModel getTransferenciaModel() {
-//		return transferenciaModel;
-//	}
-//
-//	public void setTransferenciaModel(TransferenciaModel transferenciaModel) {
-//		this.transferenciaModel = transferenciaModel;
-//	}
+
 
 	
 

@@ -39,6 +39,22 @@ public class TransferenciaModel {
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "conta_id", nullable = false)
 	private ContaModel conta;
+	
+	public TransferenciaModel(Long id, String operador, LocalDateTime data, BigDecimal valor, String tipo) {
+		super();
+		this.id = id;
+		this.operador = operador;
+		this.data = data;
+		this.valor = valor;
+		this.tipo = tipo;
+	}
+	
+	
+
+	public TransferenciaModel() {
+	}
+
+
 
 	public Long getId() {
 		return id;
