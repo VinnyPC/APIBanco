@@ -18,4 +18,6 @@ public interface TransferenciaRepository extends JpaRepository<TransferenciaMode
 	@Query("SELECT t FROM TransferenciaModel t WHERE lower(t.operador) = COALESCE(lower(:operador), lower(t.operador))")
 	List<TransferenciaModel> findByOperador(@Param("operador") String operador);
 
+	public List<TransferenciaModel> findByDataBetweenAndOperadorIgnoreCase(LocalDateTime startDateTime, LocalDateTime endDateTime, String operador);
+
 }

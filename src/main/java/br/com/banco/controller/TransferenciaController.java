@@ -30,18 +30,6 @@ public class TransferenciaController {
 		return ResponseEntity.ok(transferenciaRepository.findAll());
 	}
 	
-	//retornar todas as transferências relacionadas à aquele período de tempo.
-	@GetMapping("/transferenciasPeriodo")
-	public List<TransferenciaModel> getTransferenciasPorPeriodo(
-            @RequestParam("startDate") @DateTimeFormat(pattern = "dd-MM-yyyy") LocalDate startDate,
-            @RequestParam("endDate") @DateTimeFormat(pattern = "dd-MM-yyyy") LocalDate endDate) {
-		
-		LocalDateTime startDateTime = startDate.atStartOfDay();
-	    LocalDateTime endDateTime = endDate.plusDays(1).atStartOfDay();
-
-	    return transferenciaRepository.findByDataBetween(startDateTime, endDateTime);
-    }
-	
 	//Retornar todas as transferências relacionados à aquele operador.
 	@GetMapping("/transferenciasOperador")
 	public List<TransferenciaModel> getTransferenciasPorOperador(
@@ -49,6 +37,24 @@ public class TransferenciaController {
 
 		    return transferenciaRepository.findByOperador(operador);
 		}
+	
+	//Retornar todas as transferências relacionadas à aquele período de tempo ou
+	//caso todos os filtros sejam informados, retornar todas as transferências com base no período de tempo informado e o nome do operador.
+	@GetMapping("/transferenciasEspecificas")
+	public List<TransferenciaModel> getTransferenciasEspecificas(
+	        @RequestParam("startDate") @DateTimeFormat(pattern = "dd-MM-yyyy") LocalDate startDate,
+	        @RequestParam("endDate") @DateTimeFormat(pattern = "dd-MM-yyyy") LocalDate endDate,
+	        @RequestParam(value = "operador", required = false) String operador) {
+	    
+	    LocalDateTime startDateTime = startDate.atStartOfDay();
+	    LocalDateTime endDateTime = endDate.plusDays(1).atStartOfDay();
+
+	    if (operador != null) {
+	        return transferenciaRepository.findByDataBetweenAndOperadorIgnoreCase(startDateTime, endDateTime, operador);
+	    } else {
+	        return transferenciaRepository.findByDataBetween(startDateTime, endDateTime);
+	    }
+	}
 
 	
 	
