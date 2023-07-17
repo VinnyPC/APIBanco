@@ -25,7 +25,7 @@ public class TransferenciaController {
 	private TransferenciaRepository transferenciaRepository;
 	
 	public TransferenciaController(TransferenciaRepository transferenciaRepository2) {
-		// TODO Auto-generated constructor stub
+		
 	}
 
 	//retornar todos os dados de transferência.
